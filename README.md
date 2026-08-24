@@ -1,4 +1,4 @@
-# Fractal Music Generator
+# Frontend for Fractal Music Generator
 
 Веб-интерфейс для генератора музыки на основе фракталов.
 
