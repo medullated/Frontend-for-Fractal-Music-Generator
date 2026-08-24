@@ -1,0 +1,387 @@
+html {
+    min-height: 100%;
+    position: relative;
+    font-family: "Unbounded", sans-serif;
+    font-style: normal;
+    --lime: #D2FF42ff; 
+    --red: #FF5A01ff;
+    --black: rgb(0, 0, 0);
+    --white: #FFFEFDff;
+    --blue: #02D2F1ff;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+}
+h1 {
+    color: var(--lime);
+}
+
+.mainbody {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    gap: 100px;
+    margin-top: 100px;
+}
+
+.setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: medium;
+}
+.fractal_img {
+    display: none;
+}
+
+.fractal_cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.card-container {
+    position: relative;
+}
+
+.card-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.card-radio:checked + .card {
+    transform: scale(1.03);
+    color: var(--red);
+    background-color: rgba(8, 10, 5, 0.9);
+    filter: none;
+    backdrop-filter: none;
+    z-index: 1;
+}
+
+.card {
+    border: solid 0.5 rem;
+    border-style: solid;
+    height: 200px;
+    width: 200px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(8, 10, 5, 0.7);
+    border-color: var(--red);
+    color: var(--lime);
+    box-shadow: 
+        0.3rem 0.3rem 0 -0.25rem var(--red),
+        0.3rem 0.3rem 0 0 var(--red);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: none;
+    filter: none;
+    opacity: 1;
+}
+
+.card img {
+    border: solid 0.5 rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card h4 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 8px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+    /*backdrop-filter: blur(3px);*/
+    color: var(--red);
+}
+
+.card-radio:checked ~ .card-container .card,
+.fractal_cards:not(:has(.card-radio:checked)) .card {
+    color: var(--lime);
+    
+}
+
+.card-radio:checked ~ .card-container .card {
+    /*filter: brightness(0.6) blur(2px);*/
+    filter: brightness(0.6);
+    /*backdrop-filter: blur(4px);*/
+    opacity: 0.8;
+    color: var(--lime);
+    
+}
+
+.card-radio:checked ~ .card-container .card:hover {
+    /*filter: brightness(0.7) blur(1px);*/
+    filter: brightness(0.7);
+    /*backdrop-filter: blur(3px);*/
+    color: var(--lime);
+    
+}
+.card:hover {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+    /*backdrop-filter: blur(3px);*/
+    color: var(--red);
+}
+input {
+    border: solid 0.5 rem;
+    border-style: solid;
+    border-radius: 3px;
+    font-style: inherit;
+    font-family: inherit;
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    background-color: var(--lime);
+    color: var(--black);
+    border-color: var(--black);
+    box-shadow: 
+        0.3rem 0.3rem 0 -0.25rem var(--red),
+        0.3rem 0.3rem 0 0 var(--red);
+}
+
+button {
+    border: solid 0.5 rem;
+    border-style: solid;
+    border-radius: 3px;
+    font-style: inherit;
+    font-family: inherit;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    background-color: var(--blue);
+    color: var(--black);
+    border-color: var(--black);
+    box-shadow: 
+        0.3rem 0.3rem 0 -0.25rem var(--white),
+        0.3rem 0.3rem 0 0 var(--white);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: transform 50ms,
+                box-shadow 50ms;
+    transform: none;
+    font-weight: bolder;
+}
+button:hover {
+    scale: 1.03;
+    color: var(--red);
+    
+
+}
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px;
+    
+}
+::placeholder {
+    color: var(--black);
+}
+
+label {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0px;
+    color: var(--white);
+}
+
+.mood_cards {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mood-container {
+    position: relative;
+}
+
+.mood-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.mcard {
+    border: none;
+    height: 100px;
+    width: 120px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    border-color: var(--red);
+    color: var(--lime);
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+}
+.mcard h4 {
+    font-size: smaller;
+}
+.mood-icon {
+    font-size: 50px;
+    transition: all 0.3s ease;
+}
+
+.mood-radio:checked + .mcard {
+    transform: scale(1.03);
+    color: var(--red);
+    background-color: transparent;
+}
+
+.mood-radio:checked + .mcard .mood-icon {
+    color: var(--red);
+}
+
+.mcard:hover {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+    color: var(--red);
+}
+
+.mcard:hover .mood-icon {
+    color: var(--red);
+}
+
+.mood-radio:checked ~ .mood-container .mcard {
+    filter: brightness(0.6);
+    opacity: 0.3;
+    color: var(--lime);
+}
+
+.mood-radio:checked ~ .mood-container .mcard .mood-icon {
+    color: var(--lime);
+}
+
+.mood-radio:checked ~ .mood-container .mcard:hover {
+    filter: brightness(0.7);
+    color: var(--lime);
+}
+
+/* Стили для карточек эффектов */
+.effect_cards {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.effect-container {
+    position: relative;
+}
+
+.effect-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ecard {
+    border: none;
+    height: 100px;
+    width: 120px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    border-color: var(--red);
+    color: var(--lime);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+}
+
+.ecard h4 {
+    font-size: smaller;
+}
+
+.effect-icon {
+    font-size: 50px;
+    transition: all 0.3s ease;
+}
+
+.effect-radio:checked + .ecard {
+    transform: scale(1.03);
+    color: var(--red);
+    background-color: transparent;
+}
+
+.effect-radio:checked + .ecard .effect-icon {
+    color: var(--red);
+}
+
+.ecard:hover {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+    color: var(--red);
+}
+
+.ecard:hover .effect-icon {
+    color: var(--red);
+}
+
+.effect-radio:checked ~ .effect-container .ecard {
+    filter: brightness(0.6);
+    opacity: 0.3;
+    color: var(--lime);
+}
+
+.effect-radio:checked ~ .effect-container .ecard .effect-icon {
+    color: var(--lime);
+}
+
+.effect-radio:checked ~ .effect-container .ecard:hover {
+    filter: brightness(0.7);
+    color: var(--lime);
+}
+
+.error-message {
+    color: var(--red);
+    font-size: 0.8rem;
+    height: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.fractal_img {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    border: 2px solid var(--lime);
+    border-radius: 5px;
+    background-color: rgba(8, 10, 5, 0.7);
+}
+
+.fractal_img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}

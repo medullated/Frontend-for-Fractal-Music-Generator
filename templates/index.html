@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fractal Music</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="mainbody">
+        <div class="input_cont">
+            <h1>Генератор фрактальной музыки</h1>
+            <div class="setup">
+                <label for="duration">Продолжительность мелодии</label>
+                <input type="number" id="duration" name="duration" placeholder="Время в секундах" min="10" max="300" required>
+                <div class="error-message" id="duration-error"></div>
+                
+                <label for="bpm">Темп мелодии (BMP)</label>
+                <input type="number" id="bpm" name="bpm" placeholder="от 30 до 240" min="30" max="240" required>
+                <div class="error-message" id="bpm-error"></div>
+                
+                <label for="">Тип фрактала</label>
+                <div class="fractal_cards">
+                    <label class="card-container">
+                        <input type="radio" name="fractal_type" class="card-radio" value="lsystem" required>
+                        <div class="card">
+                            <img src="static/lsystem_g.png" alt="L-system">
+                            <h4>L-System</h4>
+                        </div>
+                    </label>
+                    
+                    <label class="card-container">
+                        <input type="radio" name="fractal_type" class="card-radio" value="mandelbrot">
+                        <div class="card">
+                            <img src="static/mand_g.png" alt="Mandelbrot">
+                            <h4>Мандельборт</h4>
+                        </div>
+                    </label>
+                    
+                    <label class="card-container">
+                        <input type="radio" name="fractal_type" class="card-radio" value="julia">
+                        <div class="card">
+                            <img src="static/julia_g.png" alt="Julia">
+                            <h4>Джулия</h4>
+                        </div>
+                    </label>
+                </div>
+                <div class="error-message" id="fractal-error"></div>
+                
+                <label for="">Инструмент/настроение</label>
+                <div class="mood_cards">
+                    <label class="mood-container">
+                        <input type="radio" name="mood_type" class="mood-radio" value="Happy" required>
+                        <div class="mcard">
+                            <span class="material-symbols-outlined mood-icon">sentiment_very_satisfied</span>
+                            <h4>Счастливое</h4>
+                        </div>
+                    </label>
+                    
+                    <label class="mood-container">
+                        <input type="radio" name="mood_type" class="mood-radio" value="Calm">
+                        <div class="mcard">
+                            <span class="material-symbols-outlined mood-icon">sentiment_content</span>
+                            <h4>Спокойное</h4>
+                        </div>
+                    </label>
+                    
+                    <label class="mood-container">
+                        <input type="radio" name="mood_type" class="mood-radio" value="Neutral">
+                        <div class="mcard">
+                            <span class="material-symbols-outlined mood-icon">sentiment_neutral</span>
+                            <h4>Нейтральное</h4>
+                        </div>
+                    </label>
+
+                    <label class="mood-container">
+                        <input type="radio" name="mood_type" class="mood-radio" value="Sad">
+                        <div class="mcard">
+                            <span class="material-symbols-outlined mood-icon">sentiment_dissatisfied</span>
+                            <h4>Грустное</h4>
+                        </div>
+                    </label>
+
+                    <label class="mood-container">
+                        <input type="radio" name="mood_type" class="mood-radio" value="Angry">
+                        <div class="mcard">
+                            <span class="material-symbols-outlined mood-icon">sentiment_extremely_dissatisfied</span>
+                            <h4>Злое</h4>
+                        </div>
+                    </label>
+                </div>
+                <div class="error-message" id="mood-error"></div>
+                
+                <label for="">Звуковые эффекты</label>
+                <div class="effect_cards">
+                    <label class="effect-container">
+                        <input type="radio" name="effect_type" class="effect-radio" value="none" checked required>
+                        <div class="ecard">
+                            <span class="material-symbols-outlined effect-icon">volume_off</span>
+                            <h4>Нет эффектов</h4>
+                        </div>
+                    </label>
+                    
+                    <label class="effect-container">
+                        <input type="radio" name="effect_type" class="effect-radio" value="echo">
+                        <div class="ecard">
+                            <span class="material-symbols-outlined effect-icon">volume_up</span>
+                            <h4>Эхо</h4>
+                        </div>
+                    </label>
+                    
+                    <label class="effect-container">
+                        <input type="radio" name="effect_type" class="effect-radio" value="reverb">
+                        <div class="ecard">
+                            <span class="material-symbols-outlined effect-icon">surround_sound</span>
+                            <h4>Реверберация</h4>
+                        </div>
+                    </label>
+                </div>
+                <div class="error-message" id="effect-error"></div>
+                
+                <button id="generate-btn">Сгенерировать</button>
+            </div>
+        </div>
+        <div class="fractal_img" id="fractal-img-container" style="display: none;">
+            <img id="fractal-image" src="" alt="Сгенерированный фрактал">
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='jscript.js')}}"></script>
+</body>
+</html>
