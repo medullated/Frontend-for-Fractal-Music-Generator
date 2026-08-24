@@ -24,6 +24,9 @@
 - Flask
 
 ## Интерфейс
+<img width="1588" height="937" alt="f" src="https://github.com/user-attachments/assets/48846e27-7596-4b4c-9eff-8af382f1a62a" />
 
 
 ## Демонстрация
+https://github.com/user-attachments/assets/2d194e69-237c-4eaa-b65f-3673186eb40c
+
